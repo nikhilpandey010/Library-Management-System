@@ -1,0 +1,41 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+<div class="flex justify-between items-end mb-6">
+    <div>
+        <h2 class="text-3xl font-bold text-gray-800">Borrow Records</h2>
+        <p class="text-gray-500">Track who has what book and when it's due.</p>
+    </div>
+    <div class="flex gap-2">
+        <a href="{% url 'borrow-add' %}" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-semibold shadow-md transition">New Record</a>
+        <a href="{% url 'export-excel' %}" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold shadow-md transition">Export Excel</a>
+    </div>
+</div>
+
+<div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+    <table class="w-full text-left border-collapse">
+        <thead class="bg-gray-50 border-b border-gray-200">
+            <tr>
+                <th class="px-6 py-4 text-sm font-semibold text-gray-600">User</th>
+                <th class="px-6 py-4 text-sm font-semibold text-gray-600">Book</th>
+                <th class="px-6 py-4 text-sm font-semibold text-gray-600">Borrowed</th>
+                <th class="px-6 py-4 text-sm font-semibold text-gray-600">Return Due</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+            {% for record in records %}
+            <tr class="hover:bg-indigo-50/30 transition">
+                <td class="px-6 py-4 font-medium text-gray-900">{{ record.user_name }}</td>
+                <td class="px-6 py-4 text-gray-600 italic">"{{ record.book.title }}"</td>
+                <td class="px-6 py-4 text-gray-500 text-sm">{{ record.borrow_date }}</td>
+                <td class="px-6 py-4 text-sm font-bold text-amber-600">{{ record.return_date }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="4" class="px-6 py-12 text-center text-gray-400">No borrowing records found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% include 'library/pagination.html' %}
+{% endblock %}

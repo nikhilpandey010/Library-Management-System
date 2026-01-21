@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Library System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <nav class="bg-indigo-700 text-white shadow-lg mb-8">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold tracking-tight">Library<span class="text-indigo-200">Admin</span></a>
+            <div class="space-x-6 font-medium">
+                <a href="{% url 'author-list' %}" class="hover:text-indigo-200 transition">Authors</a>
+                <a href="{% url 'book-list' %}" class="hover:text-indigo-200 transition">Books</a>
+                <a href="{% url 'borrow-list' %}" class="hover:text-indigo-200 transition">Borrowing</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 pb-12">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
