@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+
+
+# Database
+db.sqlite3
+db.sqlite3-journal
+
+# Static files (Compiled CSS)
+# Ignore the output but keep the source input.css
+static/css/output.css
+
+# Media files (User uploads)
+media/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Tailwind / Node
+node_modules/
+npm-debug.log*
